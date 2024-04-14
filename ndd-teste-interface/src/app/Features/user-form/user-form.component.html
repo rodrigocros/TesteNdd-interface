@@ -1,0 +1,65 @@
+<div class="p-8 grid place-items-center ">
+  <div>
+      @if(isEdit){
+          <h4>Editar usuário</h4>
+      }@else {
+          <h4>Adicionar usuário</h4>
+      }
+  </div>
+
+  <form [formGroup]="userForm" (ngSubmit)="saveUser()">
+      <div>
+          <mat-form-field class="w-96">
+              <mat-label>Nome</mat-label>
+              <input type="text" matInput formControlName="nome">
+          </mat-form-field>
+      </div>
+      <div>
+          <mat-form-field class="w-96">
+              <mat-label>Cpf</mat-label>
+              <input type="text" placeholder="insira seu CPF (somente números)" onblur="formataCPF(this)" pattern="[0-9]{11}" matInput formControlName="cpf">
+          </mat-form-field>
+      </div>
+      <div>
+          <mat-form-field class="w-96">
+              <mat-label>Sexo</mat-label>
+              <input type="text" matInput formControlName="sexo">
+          </mat-form-field>
+      </div>
+      <div>
+          <mat-form-field class="w-96">
+              <mat-label>Telefone</mat-label>
+              <input type="text" matInput formControlName="telefone">
+          </mat-form-field>
+      </div>
+      <div>
+          <mat-form-field class="w-96">
+              <mat-label>Email</mat-label>
+              <input type="email" matInput formControlName="email">
+          </mat-form-field>
+      </div>
+      <div>
+          @if(isEdit){
+              <mat-form-field class="w-96">
+                  <mat-label>DataNascimento</mat-label>
+                  <input type="txt" matInput formControlName="dataNascimento">
+              </mat-form-field>
+          }@else {
+              <mat-form-field class="w-96">
+                  <mat-label>DataNascimento</mat-label>
+                  <input type="date" matInput formControlName="dataNascimento">
+              </mat-form-field>
+          }
+      </div>
+      <div>
+          <mat-form-field class="w-96">
+              <mat-label>Observacao</mat-label>
+              <input type="text" matInput formControlName="observacao">
+          </mat-form-field>
+      </div>
+      <div class="flex justify-center">
+          <button mat-raised-button color="primary"[disabled]="!userForm.valid">Salvar</button>
+      </div>
+  </form>
+</div>
+
